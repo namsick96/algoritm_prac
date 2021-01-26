@@ -5,22 +5,23 @@ from itertools import combinations,permutations
 def backtrack(table,n):
 
     #teamarr=teamMaker(n)
-    teamarr=permutations([k for k in range(1,n+1)],n)
+    teamarr=list(combinations([k for k in range(1,n+1)],n//2))
+    print(teamarr)
     half=int(n/2)
     gap=100000000000000
-    for i in teamarr:
-        teama = list(combinations(i[:half],2))
-        teamb = list(combinations(i[half:],2))
-
-        #print(teamb)
+    for i in range(len(teamarr)//2):
 
         ascore=0
         bscore=0
-        for j in range(0,len(teama)):
-            a,b=teama[j][0],teama[j][1]
-            ascore+=table[a-1][b-1] +table[b-1][a-1]
-            c,d=teamb[j][0],teamb[j][1]
-            bscore+=table[c-1][d-1]+table[d-1][c-1]
+        targetteam=teamarr[i]
+        for p in targetteam:
+            for q in targetteam:
+                ascore+=table[p-1][q-1]
+
+        targetteam=teamarr[-1-i]
+        for p in targetteam:
+            for q in targetteam:
+                bscore+=table[p-1][q-1]
         #print(ascore)
         #print(bscore)
         gap=min(gap,abs(ascore-bscore))
