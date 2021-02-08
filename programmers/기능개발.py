@@ -3,7 +3,7 @@ def solution(progresses, speeds):
     dic={}
     queue=[]
     for k in range(len(progresses)):
-        day=math.floor((100-progresses[k])/speeds[k])
+        day=math.ceil((100-progresses[k])//speeds[k])
         if k ==0:
             queue.append(day)
         else:
@@ -16,4 +16,13 @@ def solution(progresses, speeds):
             dic[day]=dic[day]+1
         else:
             dic[day]=1
-    return list(dic.values())
+
+    keys=list(dic.keys())
+    keys.sort()
+    ans=[]
+    for q in keys:
+        ans.append(dic[q])
+
+    return ans
+
+solution([93, 30, 55],[1, 30, 5])
