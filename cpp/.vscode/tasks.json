@@ -40,13 +40,13 @@
 				//2. file input 
 				
 				"<",
-				"${fileDirname}/sample_input.txt" 
+				"${fileDirname}/sample_input.txt",
 				
 
 				//3. file output 
-				/*
+				
 				">", "${fileDirname}/sample_output.txt" 
-				*/
+				
 				
             ],
             "options": {
