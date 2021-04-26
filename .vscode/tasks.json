@@ -8,7 +8,17 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                // 1. execute .out file 
+                "&&", //to join building and running of the file 
+                "${fileDirname}/${fileBasenameNoExtension}", 
+                
+                //2. file input 
+                "<", "${fileDirname}/sample_input.txt",
+                
+                //3. file output 
+                ">", "${fileDirname}/sample_output.txt"
+
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
