@@ -19,7 +19,7 @@ def tracking(inlist,num,tracelist):
 
 
 
-f=open('../test.txt', 'r')
+f=open('./test.txt', 'r')
 
 a,b=map(int,f.readline().strip().split())
 
