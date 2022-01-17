@@ -10,28 +10,27 @@ int temp[10000000];
 
 void merge(int left, int mid, int right){
     int i=left;
-    int j=mid+1;
     int k=left;
+    int j=mid+1;
 
     while(i<=mid && j<=right){
-        if(arr[i]>=arr[j]){
+        if(arr[i]<=arr[j]){
             temp[k++]=arr[i++];
         }
         else{
             temp[k++]=arr[j++];
         }
-    }
 
+    }
     if(i>mid){
         for(int l=j; l<=right; l++){
             temp[k++]=arr[l];
         }
     }
     else{
-        for(int l=i; l<=mid; l++){
+        for(int l =i; l<=mid; l++){
             temp[k++]=arr[l];
         }
-
     }
 
     for(int l= left; l<=right; l++){
@@ -41,17 +40,16 @@ void merge(int left, int mid, int right){
 
 }
 
-
 void merge_sort(int left, int right){
-
     if(left==right){
         return;
     }
-    int mid=(left+right)/2;
+    int mid =(left+right)/2;
 
     merge_sort(left,mid);
     merge_sort(mid+1,right);
     merge(left,mid,right);
+
 }
 
 int main()
